@@ -2,19 +2,30 @@ import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from "react-native";
 import CourseCard from "../components/courseCard";
 import Icon from 'react-native-vector-icons/MaterialIcons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+
+type UserScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'Login'>;
 
 function UserScreen(): React.JSX.Element {
+  const navigation = useNavigation<UserScreenNavigationProp>();
+
+  const handleLogout = () => {
+    navigation.navigate('Login');
+  };
+
   return (
     <ScrollView style={styles.main}>
       <View style={styles.body}>
         <View style={styles.container}>
           <Text style={{color:"white", fontSize:25, fontWeight:"bold", textAlign:"center", marginTop:15}}>Profile</Text>
-          <Icon name="logout" size={30} color="white" style={{position:"absolute", top: 15, right: 15}}/>
+          <TouchableOpacity style={{position:"absolute", top: 15, right: 15}} onPress={handleLogout}>
+            <Icon name="logout" size={30} color="white"/>
+          </TouchableOpacity>
         </View>
         <View style={styles.user}>  
-        {/*Este se puede volver un componente*/}
-          <View style={styles.foto}>
-          </View>
+          <View style={styles.foto}></View>
           <Text style={{fontSize:20, fontWeight:"bold", color:"white"}}>
             Eduardo Espiritu
           </Text>
@@ -70,7 +81,6 @@ const styles = StyleSheet.create({
     height: 44,
     alignItems: "center",
     justifyContent: "center",
-    //inner shadow
   },
   button: {
     backgroundColor: "#29282F",
@@ -94,7 +104,7 @@ const styles = StyleSheet.create({
     marginBottom: 15,
   },
   user: {
-    flex:1,
+    flex: 1,
     position: "absolute",
     top: 70,
     backgroundColor: "#29282F",
@@ -110,7 +120,6 @@ const styles = StyleSheet.create({
     marginTop: 15,
     gap: 30,
   }
-
 });
 
 export default UserScreen;

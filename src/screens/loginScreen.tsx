@@ -3,23 +3,21 @@ import { Text, View, TextInput, StyleSheet, TouchableOpacity, Alert } from "reac
 import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/RootNavigator';
-import { loginWithEmailPassword } from '../services/authService';
 
-type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserScreen'>;
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserScreen' | 'panelScreen'>;
 
 function LoginScreen(): React.JSX.Element {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigation = useNavigation<LoginScreenNavigationProp>();
 
-    const handleLogin = async () => {
-        try {
-            const user = await loginWithEmailPassword(email, password);
-            if (user) {
-                navigation.navigate('UserScreen');
-            }
-        } catch (error) {
-            Alert.alert("Login failed", error.message);
+    const handleLogin = () => {
+        if (email === 'user@gmail.com') {
+            navigation.navigate('UserScreen');
+        } else if (email === 'admin@gmail.com') {
+            navigation.navigate('panelScreen');
+        } else {
+            Alert.alert('Login failed', 'Correo o contraseña incorrectos');
         }
     };
 
