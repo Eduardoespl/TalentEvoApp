@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "424503598820",
+    "project_id": "talentevopc",
+    "storage_bucket": "talentevopc.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:424503598820:android:156f60801e611c6d6796f1",
+        "android_client_info": {
+          "package_name": "com.talentevo"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCCyOUi-pWHQA0YupTRrkx2IK3KTYThCtA"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

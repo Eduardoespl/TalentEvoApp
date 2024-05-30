@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import DescriptionContainer from "../components/descriptionContainer";
@@ -13,7 +13,7 @@ type CoursePlaylistScreenNavigationProp = NativeStackNavigationProp<
 
 function LessonScreen(): React.JSX.Element {
     const navigation = useNavigation<CoursePlaylistScreenNavigationProp>();
-    
+
     return (
         <View style={styles.main}>
             <Text style={{ fontSize: 24, color: "white", fontWeight: "bold", textAlign: "center", paddingVertical: 20 }}> How to use Angular </Text>
@@ -30,12 +30,12 @@ function LessonScreen(): React.JSX.Element {
                 <Text style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
             </View>
             <View style={{ flexDirection: "row", gap: 35 }}>
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={styles.btn}
                 >
                     <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Previus</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={styles.btn}
                 >
                     <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Next</Text>
