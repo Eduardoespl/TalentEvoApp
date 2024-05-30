@@ -2,12 +2,27 @@ import React, {useState} from "react";
 import { Text, View, StyleSheet, TouchableOpacity } from "react-native";
 import Icon from 'react-native-vector-icons/Ionicons';
 import DescriptionContainer from "../components/descriptionContainer";
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+
+type CoursePlaylistScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'LessonScreen'
+>;
 
 function LessonScreen(): React.JSX.Element {
+    const navigation = useNavigation<CoursePlaylistScreenNavigationProp>();
+    
     return (
         <View style={styles.main}>
             <Text style={{ fontSize: 24, color: "white", fontWeight: "bold", textAlign: "center", paddingVertical: 20 }}> How to use Angular </Text>
-            <Icon name="arrow-back-outline" size={30} color="white" style={{ position: "absolute", top: 20, left: 20 }} />
+            <TouchableOpacity
+                style={{ position: "absolute", top: 20, left: 20 }}
+                onPress={() => navigation.goBack()}
+            >
+                <Icon name="arrow-back-outline" size={30} color="white" />
+            </TouchableOpacity>
             <View style={{ marginBottom: 25 }}>
                 <View style={styles.vOverview}>
                 </View>

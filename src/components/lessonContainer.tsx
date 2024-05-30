@@ -1,56 +1,19 @@
 import React from "react"
 import { View, Text, StyleSheet, ScrollView } from "react-native"
 import Icon from 'react-native-vector-icons/FontAwesome';
+import LessonCard from "./lessonCard";
 
 function LessonContainer(): React.JSX.Element {
     return (
     <View>
         <ScrollView style={styles.scroll}>
-            <View style={styles.container}>
-                <View>
-                    <Text style={{ fontSize: 18, color: "white" }}> Lesson </Text>
-                    <Text style={{ fontSize: 14, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
-                </View>
-                <View style={styles.btnPlay}>
-                    <Icon name="play" size={25} color="white" />
-                </View>
-            </View>
-            <View style={styles.container}>
-                <View>
-                    <Text style={{ fontSize: 18, color: "white" }}> Lesson </Text>
-                    <Text style={{ fontSize: 14, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
-                </View>
-                <View style={styles.btnPlay}>
-                    <Icon name="play" size={25} color="white" />
-                </View>
-            </View>
-            <View style={styles.container}>
-                <View>
-                    <Text style={{ fontSize: 18, color: "white" }}> Lesson </Text>
-                    <Text style={{ fontSize: 14, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
-                </View>
-                <View style={styles.btnPlay}>
-                    <Icon name="play" size={25} color="white" />
-                </View>
-            </View>
-            <View style={styles.container}>
-                <View>
-                    <Text style={{ fontSize: 18, color: "white" }}> Lesson </Text>
-                    <Text style={{ fontSize: 14, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
-                </View>
-                <View style={styles.btnPlay}>
-                    <Icon name="play" size={25} color="white" />
-                </View>
-            </View>
-            <View style={styles.container}>
-                <View>
-                    <Text style={{ fontSize: 18, color: "white" }}> Lesson </Text>
-                    <Text style={{ fontSize: 14, color: "rgba(255, 255, 255, 0.5)" }}> 10:00 minutes </Text>
-                </View>
-                <View style={styles.btnPlay}>
-                    <Icon name="play" size={25} color="white" />
-                </View>
-            </View>
+            <LessonCard />
+            <LessonCard />
+            <LessonCard />
+            <LessonCard />
+            <LessonCard />
+            <LessonCard />
+            <LessonCard />
         </ScrollView>
     </View>
     );

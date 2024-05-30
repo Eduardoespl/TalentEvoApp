@@ -3,14 +3,29 @@ import { Text, View, StyleSheet, TouchableOpacity, ScrollView } from "react-nati
 import LessonContainer from "../components/lessonContainer";
 import DescriptionContainer from "../components/descriptionContainer";
 import Icon from 'react-native-vector-icons/Ionicons';
+import { useNavigation } from '@react-navigation/native';
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { RootStackParamList } from '../navigation/RootNavigator';
+
+type CoursePlaylistScreenNavigationProp = NativeStackNavigationProp<
+    RootStackParamList,
+    'CoursePlaylistScreen'
+>;
 
 function CoursePlaylistScreen(): React.JSX.Element {
     const [activeComponent, setActiveComponent] = useState<"playlist" | "description">("playlist");
+    const navigation = useNavigation<CoursePlaylistScreenNavigationProp>();
 
     return (
         <View style={styles.main}>
             <Text style={{ fontSize: 24, color: "white", fontWeight: "bold", textAlign: "center", paddingVertical: 20 }}> Course Overview </Text>
-            <Icon name="arrow-back-outline" size={30} color="white" style={{ position: "absolute", top: 20, left: 20 }} />
+            <TouchableOpacity
+                style={{ position: "absolute", top: 20, left: 20 }}
+                onPress={() => navigation.goBack()}
+            >
+                <Icon name="arrow-back-outline" size={30} color="white" />
+            </TouchableOpacity>
+
             <View style={{ marginBottom: 25 }}>
                 <View style={styles.vOverview}>
                 </View>
@@ -18,13 +33,13 @@ function CoursePlaylistScreen(): React.JSX.Element {
                 <Text style={{ fontSize: 15, color: "rgba(255, 255, 255, 0.5)" }}> 20 hours </Text>
             </View>
             <View style={{ flexDirection: "row", gap: 35 }}>
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={activeComponent === "playlist" ? styles.btnActive : styles.btn}
                     onPress={() => setActiveComponent("playlist")}
                 >
                     <Text style={{ fontSize: 18, fontWeight: "bold", color: "white" }}>Playlist</Text>
                 </TouchableOpacity>
-                <TouchableOpacity 
+                <TouchableOpacity
                     style={activeComponent === "description" ? styles.btnActive : styles.btn}
                     onPress={() => setActiveComponent("description")}
                 >

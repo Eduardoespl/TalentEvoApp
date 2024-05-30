@@ -1,19 +1,28 @@
 import React from "react";
 import { Text, View, TextInput, StyleSheet, TouchableOpacity } from "react-native";
+import { NativeStackNavigationProp } from '@react-navigation/native-stack';
+import { useNavigation } from '@react-navigation/native';
+import { RootStackParamList } from '../navigation/RootNavigator';
 
+type LoginScreenNavigationProp = NativeStackNavigationProp<
+  RootStackParamList,
+  'Login'
+>;
 
 function LoginScreen(): React.JSX.Element {
+  const navigation = useNavigation<LoginScreenNavigationProp>();
+
   return (
     <View style={styles.body}>
       <Text style={styles.title}>Talent<Text style={styles.azul}>Evo</Text></Text>
       <View style={styles.container}>
         <View style={styles.fields}>
-            <Text style={styles.normalText}>Usuario</Text>
-            <TextInput style={styles.input}/>
-            <Text style={styles.normalText}>Contraseña</Text>
-            <TextInput style={styles.input}/>
+          <Text style={styles.normalText}>Usuario</Text>
+          <TextInput style={styles.input} />
+          <Text style={styles.normalText}>Contraseña</Text>
+          <TextInput style={styles.input} />
         </View>
-        <TouchableOpacity style={styles.button}>
+        <TouchableOpacity style={styles.button} onPress={() => navigation.navigate('UserScreen')}>
           <Text style={styles.normalText}>Acceder</Text>
         </TouchableOpacity>
       </View>
