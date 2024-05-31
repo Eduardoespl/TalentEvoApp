@@ -4,7 +4,7 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/RootNavigator';
 
-type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserScreen' | 'panelScreen'>;
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'UserScreen' | 'Main'>;
 
 function LoginScreen(): React.JSX.Element {
     const [email, setEmail] = useState('');
@@ -15,7 +15,7 @@ function LoginScreen(): React.JSX.Element {
         if (email === 'user@gmail.com') {
             navigation.navigate('UserScreen');
         } else if (email === 'admin@gmail.com') {
-            navigation.navigate('panelScreen');
+            navigation.navigate('Main');
         } else {
             Alert.alert('Login failed', 'Correo o contraseña incorrectos');
         }
