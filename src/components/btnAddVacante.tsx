@@ -5,13 +5,13 @@ import { NativeStackNavigationProp } from '@react-navigation/native-stack';
 import { useNavigation } from '@react-navigation/native';
 import { RootStackParamList } from '../navigation/RootNavigator';
 
-type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'EmployeeForm'>;
+type LoginScreenNavigationProp = NativeStackNavigationProp<RootStackParamList, 'VacanteForm'>;
 
-function BtnAddWorker(): React.JSX.Element {
+function BtnAddVacante(): React.JSX.Element {
     const navigation = useNavigation<LoginScreenNavigationProp>();
 
     const handlePress = () => {
-        navigation.navigate("EmployeeForm");
+        navigation.navigate("VacanteForm");
     };
 
     return (
@@ -57,4 +57,4 @@ const styles = StyleSheet.create({
     },
 });
 
-export default BtnAddWorker;
+export default BtnAddVacante;

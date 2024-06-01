@@ -1,13 +1,14 @@
 import React from "react";
 import { View, Text, StyleSheet } from "react-native";
-import BtnAddWorker from "../components/btnAddWorker";
+import BtnAddVacante from "../components/btnAddVacante";
 import VacanteDetailList from "../components/vacanteDetailList";
 
 function VacantesScreen(): React.JSX.Element {
     return (
         <View style={styles.container}>
             <Text style={styles.title}>Vacancies</Text>
-            <BtnAddWorker />
+            
+            <BtnAddVacante />
             <View style={styles.card_container}>
                 <VacanteDetailList />
             </View>

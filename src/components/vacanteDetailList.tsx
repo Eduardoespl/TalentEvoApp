@@ -14,7 +14,7 @@ const VacanteDetailList: React.FC = () => {
     const [vacantes, setVacantes] = useState<Vacante[]>([]);
 
     useEffect(() => {
-        const fetchEmpleados = async () => {
+        const fetchVacantes = async () => {
             try {
                 const vacantesCollection = collection(db, 'vacantes');
                 const vacantesSnapshot = await getDocs(vacantesCollection);
@@ -28,7 +28,7 @@ const VacanteDetailList: React.FC = () => {
             }
         };
 
-        fetchEmpleados();
+        fetchVacantes();
     }, []);
 
     return (

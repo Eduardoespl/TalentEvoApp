@@ -11,6 +11,8 @@ import PanelScreen from '../screens/panelScreen';
 import PersonalScreen from '../screens/personalScreen';
 import VacantesScreen from '../screens/vacantesScreen';
 import NotificationScreen from '../screens/notificationScreen';
+import EmployeeForm from '../screens/empleadoFormScreen';
+import VacanteForm from '../screens/vacanteFormScreen';
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
 const Tab = createBottomTabNavigator();
@@ -65,7 +67,9 @@ export type RootStackParamList = {
     LessonScreen: undefined;
     panelScreen: undefined;
     PersonalScreen: undefined;
+    EmployeeForm: undefined;
     VacantesScreen: undefined;
+    VacanteForm: undefined;
     NotificationScreen: undefined;
     Main: undefined;
     Details: { itemId: number; otherParam?: string };
@@ -74,14 +78,16 @@ export type RootStackParamList = {
 const RootNavigator = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="UserScreen" component={UserScreen} />
                 <Stack.Screen name="CoursePlaylistScreen" component={CoursePlaylistScreen} />
                 <Stack.Screen name="LessonScreen" component={LessonScreen} />
                 <Stack.Screen name="panelScreen" component={PanelScreen} />
                 <Stack.Screen name="PersonalScreen" component={PersonalScreen} />
+                <Stack.Screen name="EmployeeForm" component={EmployeeForm} />
                 <Stack.Screen name="VacantesScreen" component={VacantesScreen} />
+                <Stack.Screen name="VacanteForm" component={VacanteForm} />
                 <Stack.Screen name="NotificationScreen" component={NotificationScreen} />
                 <Stack.Screen name="Main" component={BottomTabNavigator} />
             </Stack.Navigator>
