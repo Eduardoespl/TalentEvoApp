@@ -1,4 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
+import { useFocusEffect } from '@react-navigation/native';
 import { FlatList } from 'react-native';
 import EmpleadoDetailCard from './empleadoDetail';
 import { collection, getDocs } from 'firebase/firestore';
@@ -14,38 +15,39 @@ interface Empleado {
 const EmpleadoDetailList: React.FC = () => {
     const [empleados, setEmpleados] = useState<Empleado[]>([]);
 
-    useEffect(() => {
-        const fetchEmpleados = async () => {
-            try {
-                const empleadosCollection = collection(db, 'empleados');
-                const empleadosSnapshot = await getDocs(empleadosCollection);
-                const empleadosList = empleadosSnapshot.docs.map(doc => ({
-                    id: doc.id,
-                    ...doc.data()
-                })) as Empleado[];
-                setEmpleados(empleadosList);
-            } catch (error) {
-                console.error("Error fetching empleados: ", error);
-            }
-        };
-
-        fetchEmpleados();
-    }, []);
+    useFocusEffect(
+        useCallback(() => {
+            const fetchEmpleados = async () => {
+                try {
+                    const empleadosCollection = collection(db, 'empleados');
+                    const empleadosSnapshot = await getDocs(empleadosCollection);
+                    const empleadosList = empleadosSnapshot.docs.map(doc => ({
+                        id: doc.id,
+                        ...doc.data()
+                    })) as Empleado[];
+                    setEmpleados(empleadosList);
+                } catch (error) {
+                    console.error("Error fetching empleados: ", error);
+                }
+            };
+            fetchEmpleados();
+        }, [])
+    );
 
     return (
         <>
-        <FlatList
-            data={empleados}
-            keyExtractor={(item) => item.id}
-            renderItem={({ item }) => (
-                <EmpleadoDetailCard
-                    key={item.id}
-                    nombre={item.nombre}
-                    apellido={item.apellido}
-                    posicion={item.posicion}
-                />
-            )}
-        />
+            <FlatList
+                data={empleados}
+                keyExtractor={(item) => item.id}
+                renderItem={({ item }) => (
+                    <EmpleadoDetailCard
+                        key={item.id}
+                        nombre={item.nombre}
+                        apellido={item.apellido}
+                        posicion={item.posicion}
+                    />
+                )}
+            />
         </>
     );
 };

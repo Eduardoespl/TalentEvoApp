@@ -1,5 +1,6 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useCallback } from 'react';
 import { FlatList } from 'react-native';
+import { useFocusEffect } from '@react-navigation/native';
 import VacanteDetailCard from './vacanteDetail';
 import { collection, getDocs } from 'firebase/firestore';
 import { db } from '../../firebaseConfig';
@@ -24,7 +25,7 @@ const VacanteDetailList: React.FC = () => {
                 })) as Vacante[];
                 setVacantes(vacantesList);
             } catch (error) {
-                console.error("Error fetching empleados: ", error);
+                console.error("Error fetching vacantes: ", error);
             }
         };
 

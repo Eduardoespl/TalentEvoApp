@@ -78,7 +78,7 @@ export type RootStackParamList = {
 const RootNavigator = () => {
     return (
         <NavigationContainer>
-            <Stack.Navigator initialRouteName="Main" screenOptions={{ headerShown: false }}>
+            <Stack.Navigator initialRouteName="Login" screenOptions={{ headerShown: false }}>
                 <Stack.Screen name="Login" component={Login} />
                 <Stack.Screen name="UserScreen" component={UserScreen} />
                 <Stack.Screen name="CoursePlaylistScreen" component={CoursePlaylistScreen} />
